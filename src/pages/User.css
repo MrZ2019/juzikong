@@ -1,0 +1,23 @@
+
+
+.top {
+    padding: 24px;
+    background: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.top img {
+    border-radius: 50%;
+}
+
+.col {
+    float: left;
+}
+
+.col-6 {
+    width: 25%;
+}
+.col-18 {
+    width: 75%;
+}
