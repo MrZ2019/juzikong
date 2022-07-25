@@ -1,15 +1,15 @@
 
 
 
-import { FETCH_ALL, SET_LIST } from '../actions'
+import { combineReducers } from 'redux'
 
-function list(state = [], action) {
-    switch (action.type) {
-        case SET_LIST:
-            return action.payload;
-        default:
-            return state;
-    }
-}
+import juzi from './juzi'
+import collection from './collection'
 
-export default list
+
+const juziApp = combineReducers({
+    juzi,
+    collection
+  })
+  
+  export default juziApp

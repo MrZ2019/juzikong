@@ -6,6 +6,10 @@ import request from '../request'
 
 import './List.css'
 
+import {HeartOutlined, PlusOutlined} from '@ant-design/icons'
+
+import AddToCollection from '../modals/AddToCollection'
+
 class ListComponent extends React.PureComponent {
 
     fetchAll() {
@@ -20,19 +24,29 @@ class ListComponent extends React.PureComponent {
         });
     }
 
+    showAddCollection(item) {
+        this.refs.addToCollection.showModal(item.id)
+    }
+
     componentDidMount() {
         this.fetchAll()
     }
     render() {
         return (
-            <div class="card-list">
-                {
-                    this.props.list.map((item) => (
-                        <div className="card">
-                            <div className="content">{item.content}</div>
-                        </div>
-                    ))
-                }
+            <div className="list-box">
+                <AddToCollection ref="addToCollection"></AddToCollection>
+                {/* <h1 >Test</h1> */}
+                <div class="card-list">
+                    {
+                        this.props.list.map((item) => (
+                            <div className="card">
+                                <div className="content">{item.content}</div>
+                                <PlusOutlined onClick={this.showAddCollection.bind(this, item)}/>
+                                <HeartOutlined />
+                            </div>
+                        ))
+                    }
+                </div>
             </div>
         )
     }
@@ -40,7 +54,7 @@ class ListComponent extends React.PureComponent {
 
 const mapStateToProps = state => {
     return {
-        list: state
+        list: state.juzi
     }
 }
 

@@ -1,3 +1,4 @@
+import { message } from 'antd';
 import axios from 'axios';
 
 import { BASE_URL, TIMEOUT} from './config';
@@ -19,6 +20,7 @@ instance.interceptors.response.use(res => {
     
     return res.data
 },error => {
+    message.error(error.message || error.response.data)
     throw error;
 })
 

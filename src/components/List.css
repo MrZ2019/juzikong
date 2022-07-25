@@ -1,11 +1,19 @@
 
-.card-list {
+.list-box {
+    .card-list {
 
+    }
+    
+    .card {
+        border: 1px solid #ddd;
+        padding: 80px 60px;
+        margin: 24px 0;
+        font-size: 20px;
+    }
+
+    .anticon {
+        float: right;
+    }
 }
 
-.card {
-    border: 1px solid #ddd;
-    padding: 80px 60px;
-    margin: 24px 0;
-    font-size: 20px;
-}
+

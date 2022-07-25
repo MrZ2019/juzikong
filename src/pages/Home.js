@@ -4,6 +4,7 @@ import React from 'react'
 import {Link} from 'react-router-dom'
 
 import styles from './Home.css'
+import './Home.less'
 
 import List from '../components/List'
 
