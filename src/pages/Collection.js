@@ -2,14 +2,14 @@
 import React from 'react'
 import {connect} from 'react-redux'
 
-import { Breadcrumb } from 'antd'
+import { Breadcrumb, Button, message } from 'antd'
 
 // import {withRouter } from 'react-router-dom'
 import { withRouter } from '../utils/withRouter'
 
 import request from '../request'
 import { PIC_PATH } from '../config'
-import {SET_LIST} from '../actions'
+import {SET_LIST, SET_COLLECTION} from '../actions'
 
 import './Collection.less'
 
@@ -33,6 +33,17 @@ class CollectionPage extends React.Component {
         this.getCollectionById(this.props.params.id)
         this.getCollectionJuziById(this.props.params.id)
     }
+    removeFromCollection(item) {
+        request.post(`/collection/removeFromCollection?juzi_id=${item.id}&collection_id=${this.props.params.id}`).then((res) => {
+            if (res == 'success') {
+                message.success('移除收藏成功')
+                let index = this.props.juzi.indexOf(item)
+                this.props.juzi.splice(index, 1)
+                let data = JSON.parse(JSON.stringify(this.props.juzi))
+                this.props.dispatch({type: SET_LIST, payload: data})
+            }
+        })
+    }    
     render() {
         const collection = this.state.collectionItem
         return (
@@ -54,6 +65,9 @@ class CollectionPage extends React.Component {
                         this.props.juzi.map((item) => (
                             <div className="card">
                                 <div className="content">{item.content}</div>
+                                <div className="btn-box">
+                                    <Button type="text" onClick={this.removeFromCollection.bind(this, item)}>[取消收藏]</Button>
+                                </div>
                             </div>
                         ))
                     }                        

@@ -4,13 +4,15 @@ import {NavLink, Link} from 'react-router-dom'
 import {Input, Button, Dropdown, Menu, Space} from 'antd'
 import { DownOutlined} from '@ant-design/icons';
 
-import './Header.css'
+import './Header.less'
 
 import imgLogo from '../assets/logo.png'
 
 import PublishModal from '../modals/Publish'
-class Header extends React.PureComponent {
 
+import {AuthContext} from '../provider'
+class Header extends React.PureComponent {
+    static contextType = AuthContext
     menu = (
         <Menu
           items={[
@@ -91,6 +93,7 @@ class Header extends React.PureComponent {
                     <li>
                         <Link to="/u">
                         <img src={require('../assets/avatar.jpeg')} alt="" className="avatar"/>
+                        <span className="username">{this.context.user}</span>
                         </Link>
                     </li>
                     {/* <li>

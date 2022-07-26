@@ -17,6 +17,22 @@
             .card {
                 padding: 20px 0;
                 border-bottom: 1px solid #ddd;
+                .btn-box {
+                    position: relative;
+                    overflow: hidden;
+                    visibility: hidden;
+                    opacity: 0;
+                    .ant-btn {
+                        float: right;
+                        color: #777;
+                    }
+                }
+                &:hover {
+                    .btn-box {
+                        visibility: visible;
+                        opacity: 1;
+                    }
+                }           
             }
         }
     }

@@ -11,6 +11,7 @@ import CollectionPage from './pages/Collection';
 
 
 import store from './store'
+import {AuthProvider} from './provider'
 import {Provider} from 'react-redux'
 
 // import Add from './components/add';
@@ -25,6 +26,7 @@ root.render(
   
     <BrowserRouter>
     <Provider store={store}>
+      <AuthProvider>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage/>}></Route>
@@ -39,6 +41,7 @@ root.render(
         
 
       </Routes>
+      </AuthProvider>
       </Provider>
     </BrowserRouter>
   

@@ -9,7 +9,7 @@ import './Home.less'
 import List from '../components/List'
 
 class HomePage extends React.PureComponent {
-
+    
     render() {
         const Grid = (
             <div className="grid">
