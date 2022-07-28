@@ -11,8 +11,14 @@ import imgLogo from '../assets/logo.png'
 import PublishModal from '../modals/Publish'
 
 import {AuthContext} from '../provider'
+import bus from '../bus';
 class Header extends React.PureComponent {
     static contextType = AuthContext
+
+    // state = {
+    //     search: '123'
+    // }
+
     menu = (
         <Menu
           items={[
@@ -45,7 +51,7 @@ class Header extends React.PureComponent {
       )
 
     onSearch(value)  {
-        console.log(value)
+        bus.emit('fetch-list', value)
     } 
 
     showPublishModal() {
@@ -67,7 +73,7 @@ class Header extends React.PureComponent {
                 <div className="header-sub">
                 <img className="logo" src={imgLogo} alt=""/>
                 <span className="desc">收集与分享你喜欢的句子</span>
-                <Input.Search className="search" placeholder="搜索..." onSearch={this.onSearch} 
+                <Input.Search className="search" placeholder="搜索..." onSearch={this.onSearch.bind(this)} 
                 enterButton />
                 <Button type="primary" className="btn-publish" onClick={this.showPublishModal.bind(this)}>发布句子</Button>
                 <ul>

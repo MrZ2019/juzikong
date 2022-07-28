@@ -8,6 +8,7 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import HomePage from './pages/Home';
 import UserPage from './pages/User';
 import CollectionPage from './pages/Collection';
+import TagPage from './pages/Tag';
 
 
 import store from './store'
@@ -32,6 +33,7 @@ root.render(
           <Route index element={<HomePage/>}></Route>
           <Route path="u" element={<UserPage/>}></Route>
           <Route path="collection/:id" element={<CollectionPage/>}></Route>
+          <Route path="tag/:name/:id" element={<TagPage/>}></Route>
           {/* <Route path="add" element={<Add />}></Route>
           <Route path="list" element={<List type="list"/>}></Route>
           <Route path="tags" element={<Tags/>}>

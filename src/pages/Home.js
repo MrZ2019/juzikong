@@ -1,5 +1,6 @@
 
 import React from 'react'
+import {connect} from 'react-redux'
 
 import {Link} from 'react-router-dom'
 
@@ -34,7 +35,12 @@ class HomePage extends React.PureComponent {
                 </div>
                 <div className="sub-title">猜你喜欢</div>
                 <div className="sub">
-                    <Link to="/tags/爱情">爱情</Link>
+                    {
+                        this.props.tag.map((item) => (
+                            <Link to={`/tag/${item.name}/${item.id}`}>{item.name}</Link>
+                        ))
+                    }
+                    {/*<Link to="/tags/爱情">爱情</Link>
                     <Link to="/tags/伤感">伤感</Link>
                     <Link to="/tags/励志">励志</Link>
                     <Link to="/tags/唯美">唯美</Link>
@@ -49,7 +55,7 @@ class HomePage extends React.PureComponent {
                     <Link to="/tags/成长">成长</Link>
                     <Link to="/tags/古诗">古诗</Link>
                     <Link to="/tags/朋友">朋友</Link>
-                    <Link to="/tags/哲理">哲理</Link>
+                    <Link to="/tags/哲理">哲理</Link> */}
                 </div>
                 <div className="sub-title">句子源于</div>
                 <div className="sub sub-b">
@@ -74,4 +80,9 @@ class HomePage extends React.PureComponent {
     }
 }
 
-export default HomePage;
+const mapStateToProps = (state)=> {
+    return {
+        tag: state.tag
+    }
+}
+export default connect(mapStateToProps)(HomePage);

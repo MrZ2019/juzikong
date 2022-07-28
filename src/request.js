@@ -5,7 +5,10 @@ import { BASE_URL, TIMEOUT} from './config';
 
 const instance = axios.create({
     baseURL:BASE_URL,
-    timeout:TIMEOUT
+    timeout:TIMEOUT,
+    headers: {
+        // 'Cache-Control': 'no-cache'
+    }
 })
 
 //添加拦截
