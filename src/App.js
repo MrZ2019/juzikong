@@ -1,4 +1,4 @@
-import './App.css';
+import  styles from './App.css';
 import { Tabs } from 'antd';
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
